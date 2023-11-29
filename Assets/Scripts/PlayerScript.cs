@@ -9,24 +9,39 @@ public class PlayerScript : MonoBehaviour
     public float turnSpeed;
     private float horizontalInput;
     private Rigidbody playerRb;
-    private Vector3 lookDirection;
+    public GameObject projectilePrefab;
+    public GameObject projectileSpawn;
+    public GameManager gameManager;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        lookDirection = new Vector3(transform.rotation.x, 0, 0);
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Rotate(Vector3.up * Time.deltaTime * turnSpeed * horizontalInput);
         if (Input.GetButtonDown("Boost"))
         {
-            playerRb.AddForce(lookDirection * boostForce, ForceMode.Impulse);
+            playerRb.AddRelativeForce(Vector3.right * boostForce, ForceMode.Impulse);
+        }
+        if (Input.GetButtonDown("Shoot"))
+        {
+            Instantiate(projectilePrefab, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Asteroid"))
+        {
+            gameManager.GameOver();
         }
     }
 }

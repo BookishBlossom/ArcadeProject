@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonTest : MonoBehaviour
+public class MoveForwards : MonoBehaviour
 {
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,13 +14,6 @@ public class ButtonTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Boost"))
-        {
-            Debug.Log("Boost");
-        }
-        if (Input.GetButtonDown("Shoot"))
-        {
-            Debug.Log("Shoot");
-        }
+        transform.Translate(Vector3.up * Time.deltaTime * speed);
     }
 }
