@@ -11,7 +11,7 @@ public class PlayerScript : MonoBehaviour
     private Rigidbody playerRb;
     public GameObject projectilePrefab;
     public GameObject projectileSpawn;
-    public GameManager gameManager;
+    private GameManager gameManager;
 
 
 
@@ -37,10 +37,11 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Asteroid"))
+        if (collision.gameObject.CompareTag("Asteroid"))
         {
+            Destroy(gameObject);
             gameManager.GameOver();
         }
     }
