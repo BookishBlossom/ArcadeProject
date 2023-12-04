@@ -37,9 +37,9 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Asteroid"))
+        if (other.gameObject.CompareTag("Asteroid"))
         {
             Destroy(gameObject);
             gameManager.GameOver();

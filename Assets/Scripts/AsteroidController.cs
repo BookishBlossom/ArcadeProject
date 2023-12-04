@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class AsteroidController : MonoBehaviour
 {
+    public float moveSpeed;
+    public float rotateSpeed;
     private GameManager gameManager;
     public int pointValue;
+    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        RandomMove();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -38,5 +43,11 @@ public class AsteroidController : MonoBehaviour
             // wait what if instead, the smaller sasteroids were inside the larger one. and they just get unhidden by
             // Instantiate(miniAsteroid, transform.position, transform.rotation); 
         }
+    }
+
+    public void RandomMove()
+    {
+        // Vector3 lookDirection = ( - transform.position).normalized;
+        // rb.AddForce(lookDirection * moveSpeed);
     }
 }
