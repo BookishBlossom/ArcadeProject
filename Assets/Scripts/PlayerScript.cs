@@ -12,7 +12,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject projectilePrefab;
     public GameObject projectileSpawn;
     private GameManager gameManager;
-
+    public GameObject boostIndicator;
 
 
     // Start is called before the first frame update
@@ -20,6 +20,7 @@ public class PlayerScript : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        boostIndicator.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -29,7 +30,7 @@ public class PlayerScript : MonoBehaviour
         transform.Rotate(Vector3.up * Time.deltaTime * turnSpeed * horizontalInput);
         if (Input.GetButtonDown("Boost"))
         {
-            playerRb.AddRelativeForce(Vector3.right * boostForce, ForceMode.Impulse);
+            StartCoroutine (Boost());
         }
         if (Input.GetButtonDown("Shoot"))
         {
@@ -44,5 +45,13 @@ public class PlayerScript : MonoBehaviour
             Destroy(gameObject);
             gameManager.GameOver();
         }
+    }
+
+    IEnumerator Boost()
+    {
+        playerRb.AddRelativeForce(Vector3.right * boostForce, ForceMode.Impulse);
+        boostIndicator.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        boostIndicator.gameObject.SetActive(false);
     }
 }

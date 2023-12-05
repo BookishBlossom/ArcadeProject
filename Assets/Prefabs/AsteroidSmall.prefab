@@ -110,11 +110,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5995867816426719127}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1360679, y: 1.494063, z: 2.311222}
-  m_Center: {x: 0.17014888, y: 0.6172627, z: 0.064366296}
+  m_Size: {x: 2.1360679, y: 13.025237, z: 2.311222}
+  m_Center: {x: 0.17014885, y: 1.264246, z: 0.06436634}
 --- !u!114 &6914419415766554244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bfc0d09539929447ad3ccabd88b70b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  rotateSpeed: 0
+  moveSpeed: 4
+  rotateSpeed: 30
   pointValue: 1
+  miniAsteroid: {fileID: 6918765380351362948, guid: 592f3cb2be39fb443b7805f529a800c8, type: 3}

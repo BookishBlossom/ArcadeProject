@@ -8,14 +8,16 @@ public class AsteroidController : MonoBehaviour
     public float rotateSpeed;
     private GameManager gameManager;
     public int pointValue;
-    private Rigidbody rb;
+    private Rigidbody asteroidRb;
+    public GameObject miniAsteroid;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        asteroidRb = GetComponent<Rigidbody>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         RandomMove();
+        asteroidRb.AddRelativeForce(Vector3.right * moveSpeed, ForceMode.Impulse);
     }
 
     // Update is called once per frame
@@ -24,9 +26,9 @@ public class AsteroidController : MonoBehaviour
         transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("PlayerShot"))
+        if (other.gameObject.CompareTag("PlayerShot"))
         {
             gameManager.UpdateScore(pointValue);
             Shatter();
@@ -36,13 +38,10 @@ public class AsteroidController : MonoBehaviour
 
     public void Shatter()
     {
-        for (int i = 0; i < 5; i++)
-        {
-            // should the smaller asteroids be a different prefab? or is there a better way to do this
-            // write something to generate spawn coordinates?
-            // wait what if instead, the smaller sasteroids were inside the larger one. and they just get unhidden by
-            // Instantiate(miniAsteroid, transform.position, transform.rotation); 
-        }
+        float posX = transform.position.x;
+        float posY = transform.position.y;
+        Instantiate(miniAsteroid, new Vector3(posX + 1f, posY, -1.5f), transform.rotation);
+        Instantiate(miniAsteroid, new Vector3(posX - 1f, posY, -1.5f), transform.rotation);
     }
 
     public void RandomMove()

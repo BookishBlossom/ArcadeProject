@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveForwards : MonoBehaviour
+public class ShotController : MonoBehaviour
 {
     public float speed;
     // Start is called before the first frame update
@@ -15,5 +15,8 @@ public class MoveForwards : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.up * Time.deltaTime * speed);
+
     }
+
+
 }
