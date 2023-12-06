@@ -158,8 +158,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 241.72807, y: 2, z: 1.509012}
-  m_Center: {x: -121.86404, y: 0, z: -0.08394178}
+  m_Size: {x: 241.72807, y: 4.81208, z: 1.31568}
+  m_Center: {x: -121.86404, y: 0.19754381, z: -0.18060884}
 --- !u!1 &142825780
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,8 +877,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 239.99998, y: 2, z: 2.222795}
-  m_Center: {x: 3.4975104e-13, y: 0, z: 0.38860172}
+  m_Size: {x: 239.99998, y: 2.3912537, z: 1.9929994}
+  m_Center: {x: -4.7295284e-14, y: -0.19562177, z: 0.5034993}
 --- !u!114 &725200716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -962,7 +962,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52e8481daae3caa4eb3cebe2024c3c8e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52e8481daae3caa4eb3cebe2024c3c8e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1031,7 +1031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64ec58528b42e4341881774b44ea5a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostForce: 2
+  boostForce: 1
   turnSpeed: 90
   projectilePrefab: {fileID: 5397049893852029405, guid: f28d192bcd3f1bd4fadabece6f05e316, type: 3}
   projectileSpawn: {fileID: 538053232}
@@ -1236,7 +1236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52e8481daae3caa4eb3cebe2024c3c8e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52e8481daae3caa4eb3cebe2024c3c8e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1432,7 +1432,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52e8481daae3caa4eb3cebe2024c3c8e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8
+      value: 8.22
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52e8481daae3caa4eb3cebe2024c3c8e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1505,8 +1505,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 355.8267, y: 1.9999998, z: 1.7024734}
-  m_Center: {x: -176.91321, y: 0, z: -0.14876358}
+  m_Size: {x: 355.8267, y: 2.4704368, z: 1.5049013}
+  m_Center: {x: -176.91321, y: -0.06762615, z: -0.24754968}
 --- !u!114 &1197538402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1648,7 +1648,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c40c3912b334c24eb4af847bc18e0aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.24
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c40c3912b334c24eb4af847bc18e0aa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1941,8 +1941,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 241.72807, y: 2, z: 1.756089}
-  m_Center: {x: -121.86404, y: 0, z: 0.121955715}
+  m_Size: {x: 241.72807, y: 2.6042502, z: 1.5255775}
+  m_Center: {x: -121.86404, y: 0.00000047683716, z: 0.23721235}
 --- !u!1001 &2038987929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1968,7 +1968,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52e8481daae3caa4eb3cebe2024c3c8e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8
+      value: -7.78
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 52e8481daae3caa4eb3cebe2024c3c8e, type: 3}
       propertyPath: m_LocalPosition.y

@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bfc0d09539929447ad3ccabd88b70b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  moveSpeed: 7
   rotateSpeed: 30
   pointValue: 1
   miniAsteroid: {fileID: 6918765380351362948, guid: 592f3cb2be39fb443b7805f529a800c8, type: 3}

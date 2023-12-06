@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class ShotController : MonoBehaviour
 {
+    public float timeSpawned;
     public float speed;
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(shotTimer());
     }
 
     // Update is called once per frame
@@ -18,5 +19,9 @@ public class ShotController : MonoBehaviour
 
     }
 
-
+    IEnumerator shotTimer()
+    {
+        yield return new WaitForSeconds(timeSpawned);
+        Destroy(gameObject);
+    }
 }
