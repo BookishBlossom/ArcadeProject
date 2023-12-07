@@ -13,6 +13,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject projectileSpawn;
     private GameManager gameManager;
     public GameObject boostIndicator;
+    public GameObject powerupIndicator;
 
 
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class PlayerScript : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         boostIndicator.gameObject.SetActive(false);
+        powerupIndicator.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -44,6 +46,12 @@ public class PlayerScript : MonoBehaviour
         {
             Destroy(gameObject);
             gameManager.GameOver();
+        }
+
+        if (other.gameObject.CompareTag("PowerUp"))
+        {
+            powerupIndicator.gameObject.SetActive(true);
+            Destroy(other.gameObject);
         }
     }
 

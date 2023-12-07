@@ -7,26 +7,47 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private int score;
-    public TextMeshProUGUI scoreText;
+    //variables
     public GameObject restartScreen;
     public bool isGameActive = true;
+
+    //score variables
+    public int currentScore = 0;
+    private int highScore = 0;
+    public TextMeshProUGUI currentScoreText;
+    public TextMeshProUGUI highScoreText;
 
     // Start is called before the first frame update
     void Start()
     {
-        score = 0;
-        UpdateScore(0);
         isGameActive = true;
         restartScreen.gameObject.SetActive(false);
+
+        // Load the high score from PlayerPrefs
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        UpdateScoreUI();
     }
 
-    public void UpdateScore(int ScoreToAdd)
+    //score managing
+    void UpdateScoreUI()
     {
-        score += ScoreToAdd;
-        scoreText.text = "Score: " + score;
+        currentScoreText.text = "Score: " + currentScore;
+        highScoreText.text = "High Score: " + highScore;
     }
 
+    public void AddScore(int amount)
+    {
+        currentScore += amount;
+        if (currentScore > highScore)
+        {
+            highScore = currentScore;
+            PlayerPrefs.SetInt("HighScore", highScore);
+            PlayerPrefs.Save();
+        }
+        UpdateScoreUI();
+    }
+
+    //restart managing
     public void GameOver()
     {
         Debug.Log("Game Over");

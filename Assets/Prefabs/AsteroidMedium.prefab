@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4874126678125670354, guid: f5a32c6e15f14dd42b2400882daeba11, type: 3}
+  - {fileID: 2100000, guid: 2c9a34ca0f0e75e4e8f0960f83b17cad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -129,5 +129,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rotateSpeed: 20
-  pointValue: 1
+  pointValue: 50
   miniAsteroid: {fileID: 5995867816426719127, guid: ed8c1b0e8c01b6b48850477e932a6ba8, type: 3}

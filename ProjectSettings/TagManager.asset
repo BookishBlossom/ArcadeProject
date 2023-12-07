@@ -8,6 +8,8 @@ TagManager:
   - PlayerShot
   - Background
   - Border
+  - PowerUp
+  - Shield
   layers:
   - Default
   - TransparentFX

@@ -22,15 +22,18 @@ public class ScreenWrap : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (direction == "x" || direction == "X")
+        if (other.gameObject.CompareTag("PlayerShot") || other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Asteroid"))
         {
-            other.transform.position = new Vector3((-other.transform.position.x) + offset, other.transform.position.y, -1.5f);
+            if (direction == "x" || direction == "X")
+            {
+                other.transform.position = new Vector3((-other.transform.position.x) + offset, other.transform.position.y, -1.5f);
 
-        }
-        else if (direction == "y" || direction == "Y")
-        {
-            other.transform.position = new Vector3(other.transform.position.x, (-other.transform.position.y) + offset, -1.5f);
+            }
+            else if (direction == "y" || direction == "Y")
+            {
+                other.transform.position = new Vector3(other.transform.position.x, (-other.transform.position.y) + offset, -1.5f);
 
+            }
         }
     }
 }

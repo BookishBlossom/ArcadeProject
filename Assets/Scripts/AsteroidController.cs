@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AsteroidController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class AsteroidController : MonoBehaviour
     public int pointValue;
     private Rigidbody asteroidRb;
     public GameObject miniAsteroid;
+    //private Component scoreManager;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,7 @@ public class AsteroidController : MonoBehaviour
         transform.Rotate(0, Random.Range(-360, 360), 0);
         asteroidRb = GetComponent<Rigidbody>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        //scoreManager = GameObject.Find("Score Manager").GetComponent("ScoreManager");
         RandomMove();
         //asteroidRb.AddRelativeForce(Vector3.right * moveSpeed, ForceMode.Impulse);
     }
@@ -32,7 +35,8 @@ public class AsteroidController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayerShot"))
         {
-            gameManager.UpdateScore(pointValue);
+            gameManager.AddScore(pointValue);
+            //scoreManager.AddScore(pointValue);
             Shatter();
             Destroy(gameObject);
             Destroy(other.gameObject);
