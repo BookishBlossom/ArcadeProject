@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnController : MonoBehaviour
 {
     public GameObject asteroidPrefab;
+    public GameObject powerupPrefab;
     public int enemyCount;
     public float spawnRange;
     public float safeRange;
@@ -13,6 +14,7 @@ public class SpawnController : MonoBehaviour
     void Start()
     {
         SpawnEnemyWave(4);
+        SpawnPowerup();
     }
 
     // Update is called once per frame
@@ -28,6 +30,12 @@ public class SpawnController : MonoBehaviour
             Instantiate(asteroidPrefab, GenerateSpawnPosition(), asteroidPrefab.transform.rotation);
         }
     }
+
+    void SpawnPowerup()
+    {
+        Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
+    }
+
     private Vector3 GenerateSpawnPosition()
     {
         float spawnPosX=0;

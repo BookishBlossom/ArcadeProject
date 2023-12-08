@@ -17,9 +17,15 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI currentScoreText;
     public TextMeshProUGUI highScoreText;
 
+    //audio variables
+    private AudioSource gameAudio;
+    public AudioClip deathSound;
+    public AudioClip explodeSound;
+
     // Start is called before the first frame update
     void Start()
     {
+        gameAudio = GetComponent<AudioSource>();
         isGameActive = true;
         restartScreen.gameObject.SetActive(false);
 
@@ -37,6 +43,7 @@ public class GameManager : MonoBehaviour
 
     public void AddScore(int amount)
     {
+        gameAudio.PlayOneShot(explodeSound, 1.0f);
         currentScore += amount;
         if (currentScore > highScore)
         {
@@ -50,6 +57,7 @@ public class GameManager : MonoBehaviour
     //restart managing
     public void GameOver()
     {
+        gameAudio.PlayOneShot(deathSound, 1.0f);
         Debug.Log("Game Over");
         restartScreen.gameObject.SetActive(true);
     }
