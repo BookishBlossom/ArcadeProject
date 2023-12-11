@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class SpawnController : MonoBehaviour
 {
+    //prefabs of gameobjects to spawn
     public GameObject asteroidPrefab;
     public GameObject powerupPrefab;
-    public int enemyCount;
+
+    //range inside the playing field
     public float spawnRange;
+
+    // range of space around player spawn safe from asteroids spawning
     public float safeRange;
 
     // Start is called before the first frame update
     void Start()
     {
+        //spawns 4 asteroids and a powerup at the start
         SpawnEnemyWave(4);
         SpawnPowerup();
     }
@@ -36,10 +41,12 @@ public class SpawnController : MonoBehaviour
         Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
     }
 
+    //generates random spawn positions for tthe asteroids that don't overlap with the player's spawn
     private Vector3 GenerateSpawnPosition()
     {
         float spawnPosX=0;
         float spawnPosY = 0;
+
         while (spawnPosX < safeRange && spawnPosX > -safeRange)
         {
             spawnPosX = Random.Range(-spawnRange, spawnRange);
@@ -50,8 +57,8 @@ public class SpawnController : MonoBehaviour
             spawnPosY = Random.Range(-spawnRange, spawnRange);
         }
 
-
         Vector3 randomPos = new Vector3(spawnPosX, spawnPosY, -2);
+
         return randomPos;
     }
 

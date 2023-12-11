@@ -4,31 +4,25 @@ using UnityEngine;
 
 public class ScreenWrap : MonoBehaviour
 {
-    //variables
+    //how far the moved object is moved from the exit point
     public float offset;
+
+    // for if the barrier is at the top/bottom or left/right
     public string direction;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    //
     private void OnTriggerEnter(Collider other)
     {
+        //limits objects moved to the player, the player's shots, and asteroids
         if (other.gameObject.CompareTag("PlayerShot") || other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Asteroid"))
         {
+            // if barrier's on the x axis the object's x axis is flipped
             if (direction == "x" || direction == "X")
             {
                 other.transform.position = new Vector3((-other.transform.position.x) + offset, other.transform.position.y, -1.5f);
 
             }
+            // if barrier's on the y axis the object's y axis is flipped
             else if (direction == "y" || direction == "Y")
             {
                 other.transform.position = new Vector3(other.transform.position.x, (-other.transform.position.y) + offset, -1.5f);
