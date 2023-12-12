@@ -749,6 +749,7 @@ GameObject:
   - component: {fileID: 602279175}
   - component: {fileID: 602279176}
   - component: {fileID: 602279177}
+  - component: {fileID: 602279178}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -764,7 +765,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 602279174}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -450.29874, y: -362.0234, z: 6.5396156}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -888,6 +889,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &602279178
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602279174}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 2.5, z: 2.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &662306148
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,8 +1093,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 239.99998, y: 2.3912537, z: 1.9929994}
-  m_Center: {x: -4.7295284e-14, y: -0.19562177, z: 0.5034993}
+  m_Size: {x: 239.99998, y: 3.3037238, z: 1.9929994}
+  m_Center: {x: -4.7295284e-14, y: -0.22950472, z: 0.5034993}
 --- !u!114 &725200716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2067,7 +2081,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883828784}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 448.193, y: 361.6989, z: -6.5113516}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2113,8 +2127,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 241.72807, y: 2.6042502, z: 1.5255775}
-  m_Center: {x: -121.86404, y: 0.00000047683716, z: 0.23721235}
+  m_Size: {x: 241.72807, y: 5.1421947, z: 1.5255775}
+  m_Center: {x: -121.86404, y: 0.07604618, z: 0.23721235}
 --- !u!1001 &2038987929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2223,7 +2237,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroidPrefab: {fileID: 6361288272459957774, guid: 5912a58182067d440a6d52ccffa36288, type: 3}
   powerupPrefab: {fileID: 8331374706952522165, guid: 22aa3bae384e037448de81b5f9c80ba2, type: 3}
-  enemyCount: 0
   spawnRange: 4
   safeRange: 2
 --- !u!4 &2130754384
@@ -2291,6 +2304,14 @@ PrefabInstance:
     - target: {fileID: 7161889093179308640, guid: 83c5cbdf6bc93af428910f704e1001c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7272923425096113860, guid: 83c5cbdf6bc93af428910f704e1001c5, type: 3}
+      propertyPath: boostForce
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7272923425096113867, guid: 83c5cbdf6bc93af428910f704e1001c5, type: 3}
+      propertyPath: m_Drag
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7507487950767268058, guid: 83c5cbdf6bc93af428910f704e1001c5, type: 3}
       propertyPath: m_Name

@@ -27,8 +27,6 @@ public class GameManager : MonoBehaviour
     //player lives
     private int lifeCount = 3;
 
-    private int asteroidCount;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +40,13 @@ public class GameManager : MonoBehaviour
         livesDisplay.text = "A A A";
     }
 
+    private void Update()
+    {
+        if (Input.GetButtonDown("Restart"))
+        {
+            RestartGame();
+        }
+    }
 
     //score managing
     public void AddScore(int amount)
@@ -57,6 +62,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.Save();
         }
         UpdateScoreUI();
+        
     }
 
     void UpdateScoreUI()
@@ -75,19 +81,25 @@ public class GameManager : MonoBehaviour
         if (lifeCount == 2)
         {
             livesDisplay.text = "A A";
-            Instantiate(playerPrefab, playerPrefab.transform.position, playerPrefab.transform.rotation);
+            RespawnPlayer();
         }
         else if (lifeCount == 1)
         {
             livesDisplay.text = "A";
-            Instantiate(playerPrefab, playerPrefab.transform.position, playerPrefab.transform.rotation);
-
+            RespawnPlayer();
         }
         else if (lifeCount == 0)
         {
             livesDisplay.text = " ";
             GameOver();
         }
+    }
+
+    //respawns player
+    public void RespawnPlayer()
+    {
+
+        Instantiate(playerPrefab, playerPrefab.transform.position, playerPrefab.transform.rotation);
     }
 
     //restart managing

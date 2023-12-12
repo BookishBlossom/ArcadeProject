@@ -25,6 +25,8 @@ public class AsteroidController : MonoBehaviour
     private AudioSource asteroidAudio;
     public AudioClip explodeSound;
 
+    public ParticleSystem explosionParticle;
+
 
     // Start is called before the first frame update
     void Start()
@@ -75,6 +77,9 @@ public class AsteroidController : MonoBehaviour
         // gets asteroid's x and y position
         float posX = transform.position.x;
         float posY = transform.position.y;
+
+        //particle system
+        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
 
         //spawns both asteroids in seperate positions
         Instantiate(miniAsteroid, new Vector3(posX + 1f, posY, -1.5f), transform.rotation);

@@ -8,6 +8,11 @@ public class SpawnController : MonoBehaviour
     public GameObject asteroidPrefab;
     public GameObject powerupPrefab;
 
+    //waves
+    private int asteroidCount;
+    private int waveNumber = 4;
+
+
     //range inside the playing field
     public float spawnRange;
 
@@ -18,14 +23,21 @@ public class SpawnController : MonoBehaviour
     void Start()
     {
         //spawns 4 asteroids and a powerup at the start
-        SpawnEnemyWave(4);
+        SpawnEnemyWave(waveNumber);
         SpawnPowerup();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        asteroidCount = FindObjectsOfType<AsteroidController>().Length;
+        if (asteroidCount == 0)
+        {
+            waveNumber++;
+            SpawnEnemyWave(waveNumber);
+            Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
+        }
+        Debug.Log("Asteroid Count: " + asteroidCount);
     }
 
     void SpawnEnemyWave(int enemiesToSpawn)
