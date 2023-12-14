@@ -71,7 +71,7 @@ public class PlayerScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //if player collides with asteroid when not shielded, player loses a life
-        if (other.gameObject.CompareTag("Asteroid") && !shielded)
+        if ((other.gameObject.CompareTag("Asteroid") || other.gameObject.CompareTag("Saucer") || other.gameObject.CompareTag("SaucerShot")) && !shielded)
         {
             gameManager.updateLifeCount();
             Destroy(gameObject);

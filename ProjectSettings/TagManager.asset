@@ -10,6 +10,8 @@ TagManager:
   - Border
   - PowerUp
   - Shield
+  - Saucer
+  - SaucerShot
   layers:
   - Default
   - TransparentFX

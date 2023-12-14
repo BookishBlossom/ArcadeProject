@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
 
     //player lives
     private int lifeCount = 3;
+    public Vector3 spawnPoint = Vector3.zero;
+    public float safetyRadius;
+    public float launchForce;
 
     // Start is called before the first frame update
     void Start()
@@ -40,11 +43,18 @@ public class GameManager : MonoBehaviour
         livesDisplay.text = "A A A";
     }
 
+
     private void Update()
     {
-        if (Input.GetButtonDown("Restart"))
+        if (Input.GetButtonDown("Start"))
         {
             RestartGame();
+        }
+
+        if (Input.GetButtonDown("Exit"))
+        {
+            Application.Quit();
+            Debug.Log("Exit Button Pressed");
         }
     }
 
@@ -81,12 +91,12 @@ public class GameManager : MonoBehaviour
         if (lifeCount == 2)
         {
             livesDisplay.text = "A A";
-            RespawnPlayer();
+            StartCoroutine(RespawnPlayer());
         }
         else if (lifeCount == 1)
         {
             livesDisplay.text = "A";
-            RespawnPlayer();
+            StartCoroutine(RespawnPlayer());
         }
         else if (lifeCount == 0)
         {
@@ -96,9 +106,29 @@ public class GameManager : MonoBehaviour
     }
 
     //respawns player
-    public void RespawnPlayer()
+    IEnumerator RespawnPlayer()
     {
+        yield return new WaitForSeconds(1);
 
+        //Check to see if spawn is clear
+
+        GameObject[] asteroids = GameObject.FindGameObjectsWithTag("Asteroid");
+
+        bool canSpawn = false;
+
+        while (!canSpawn)
+        {
+            canSpawn = true;
+            foreach (GameObject asteroid in asteroids)
+            {
+                if ((asteroid.transform.position - spawnPoint).magnitude < safetyRadius)
+                {
+                    asteroid.GetComponent<Rigidbody>().AddForce((asteroid.transform.position - spawnPoint).normalized * launchForce, ForceMode.Impulse);
+                    canSpawn = false;
+                }
+            }
+            yield return new WaitForSeconds(0.25f);
+        }
         Instantiate(playerPrefab, playerPrefab.transform.position, playerPrefab.transform.rotation);
     }
 

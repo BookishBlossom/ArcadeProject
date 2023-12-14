@@ -38,6 +38,8 @@ public class AsteroidController : MonoBehaviour
 
         //spawns with a randomized rotation
         transform.Rotate(0, Random.Range(-360, 360), 0);
+
+        //chooses a direction to move in
         RandomMove();
     }
 
@@ -69,6 +71,7 @@ public class AsteroidController : MonoBehaviour
                 Destroy(other.gameObject);
             }
         }
+
     }
 
     //asteroid splits into 2 smaller pieces

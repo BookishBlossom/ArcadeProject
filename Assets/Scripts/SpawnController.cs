@@ -7,11 +7,14 @@ public class SpawnController : MonoBehaviour
     //prefabs of gameobjects to spawn
     public GameObject asteroidPrefab;
     public GameObject powerupPrefab;
+    public GameObject saucerPrefab;
+
+
+    public float timeBetweenSaucers;
 
     //waves
     private int asteroidCount;
     private int waveNumber = 4;
-
 
     //range inside the playing field
     public float spawnRange;
@@ -19,12 +22,15 @@ public class SpawnController : MonoBehaviour
     // range of space around player spawn safe from asteroids spawning
     public float safeRange;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
         //spawns 4 asteroids and a powerup at the start
         SpawnEnemyWave(waveNumber);
         SpawnPowerup();
+        StartCoroutine(WaitForSaucerTime());
     }
 
     // Update is called once per frame
@@ -56,10 +62,12 @@ public class SpawnController : MonoBehaviour
     //generates random spawn positions for tthe asteroids that don't overlap with the player's spawn
     private Vector3 GenerateSpawnPosition()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
         float spawnPosX=0;
         float spawnPosY = 0;
 
-        while (spawnPosX < safeRange && spawnPosX > -safeRange)
+        while ((spawnPosX < safeRange && spawnPosX > -safeRange))
         {
             spawnPosX = Random.Range(-spawnRange, spawnRange);
         }
@@ -70,8 +78,19 @@ public class SpawnController : MonoBehaviour
         }
 
         Vector3 randomPos = new Vector3(spawnPosX, spawnPosY, -2);
-
         return randomPos;
     }
 
+    IEnumerator WaitForSaucerTime()
+    {
+        yield return new WaitForSeconds(30);
+        StartCoroutine(SpawnSaucer());
+    }
+    IEnumerator SpawnSaucer()
+    {
+        Vector3 saucerSpawnPos = new Vector3(-3.5f, Random.Range(-spawnRange, spawnRange), 0);
+        yield return new WaitForSeconds(timeBetweenSaucers);
+        Instantiate(saucerPrefab, GenerateSpawnPosition(), saucerPrefab.transform.rotation);
+        StartCoroutine(SpawnSaucer());
+    }
 }

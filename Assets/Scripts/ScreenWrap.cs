@@ -13,8 +13,8 @@ public class ScreenWrap : MonoBehaviour
     //
     private void OnTriggerEnter(Collider other)
     {
-        //limits objects moved to the player, the player's shots, and asteroids
-        if (other.gameObject.CompareTag("PlayerShot") || other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Asteroid"))
+        //limits objects moved to the player, the player's shots, saucers, saucer shots, and asteroids
+        if (!other.gameObject.CompareTag("Shield") && !other.gameObject.CompareTag("PowerUp"))
         {
             // if barrier's on the x axis the object's x axis is flipped
             if (direction == "x" || direction == "X")
