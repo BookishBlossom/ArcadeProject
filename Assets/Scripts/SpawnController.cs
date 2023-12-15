@@ -89,8 +89,8 @@ public class SpawnController : MonoBehaviour
     IEnumerator SpawnSaucer()
     {
         Vector3 saucerSpawnPos = new Vector3(-3.5f, Random.Range(-spawnRange, spawnRange), 0);
-        yield return new WaitForSeconds(timeBetweenSaucers);
         Instantiate(saucerPrefab, GenerateSpawnPosition(), saucerPrefab.transform.rotation);
+        yield return new WaitForSeconds(timeBetweenSaucers);
         StartCoroutine(SpawnSaucer());
     }
 }
